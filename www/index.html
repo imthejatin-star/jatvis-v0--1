@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#05070b"
+  >
+
+  <meta
+    name="mobile-web-app-capable"
+    content="yes"
+  >
+
+  <title>JARVIS</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="grid"></div>
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="reactor">
+        <div class="reactor-core"></div>
+      </div>
+
+      <div>
+        <div class="brand-title">JARVIS</div>
+        <div class="brand-subtitle">PERSONAL INTELLIGENCE SYSTEM</div>
+      </div>
+
+    </div>
+
+    <div class="online-status">
+      <span></span>
+      ONLINE
+    </div>
+
+  </header>
+
+  <main>
+
+    <section class="hero">
+
+      <div class="system-label">
+        JARVIS SYSTEM / VERSION 0.1
+      </div>
+
+      <h1>
+        Your personal
+        <strong>intelligence layer.</strong>
+      </h1>
+
+      <p>
+        Conversation, memory, tools and task management —
+        inside one personal assistant.
+      </p>
+
+    </section>
+
+
+    <section class="assistant-card">
+
+      <div class="card-header">
+
+        <div>
+          <span class="small-label">COMMAND INTERFACE</span>
+          <h2>JARVIS</h2>
+        </div>
+
+        <div class="connection">
+          LOCAL CORE
+        </div>
+
+      </div>
+
+
+      <div
+        id="conversation"
+        class="conversation"
+      ></div>
+
+
+      <div class="quick-actions">
+
+        <button data-command="What can you do?">
+          Capabilities
+        </button>
+
+        <button data-command="What time is it?">
+          Time
+        </button>
+
+        <button data-command="Calculate 25 * 18">
+          Calculator
+        </button>
+
+        <button data-command="Show my tasks">
+          Tasks
+        </button>
+
+      </div>
+
+
+      <form
+        id="commandForm"
+        class="command-bar"
+      >
+
+        <button
+          type="button"
+          id="voiceButton"
+          class="voice-button"
+          aria-label="Voice input"
+        >
+          <span class="microphone"></span>
+        </button>
+
+        <input
+          id="commandInput"
+          type="text"
+          placeholder="Talk to Jarvis..."
+          autocomplete="off"
+        >
+
+        <button
+          type="submit"
+          class="send-button"
+          aria-label="Send"
+        >
+          <span>↑</span>
+        </button>
+
+      </form>
+
+
+      <div
+        id="systemMessage"
+        class="system-message"
+      >
+        SYSTEM READY
+      </div>
+
+    </section>
+
+
+    <section class="dashboard">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="small-label">
+            PERSONAL COMMAND CENTER
+          </span>
+
+          <h2>System overview</h2>
+        </div>
+
+        <span class="version">V0.1</span>
+
+      </div>
+
+
+      <div class="dashboard-grid">
+
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-card-top">
+            <span class="dashboard-symbol">◎</span>
+            <span class="active">ACTIVE</span>
+          </div>
+
+          <h3>Memory</h3>
+
+          <div
+            id="memoryCount"
+            class="big-number"
+          >
+            0
+          </div>
+
+          <p>
+            Information Jarvis has been asked to remember.
+          </p>
+
+          <button
+            id="memoryButton"
+            class="text-button"
+          >
+            Open memory →
+          </button>
+
+        </article>
+
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-card-top">
+            <span class="dashboard-symbol">✓</span>
+            <span class="active">ACTIVE</span>
+          </div>
+
+          <h3>Tasks</h3>
+
+          <div
+            id="taskCount"
+            class="big-number"
+          >
+            0
+          </div>
+
+          <p>
+            Uncompleted tasks in your command center.
+          </p>
+
+          <button
+            id="taskButton"
+            class="text-button"
+          >
+            Open tasks →
+          </button>
+
+        </article>
+
+
+        <article class="dashboard-card">
+
+          <div class="dashboard-card-top">
+            <span class="dashboard-symbol">⌁</span>
+            <span class="active">READY</span>
+          </div>
+
+          <h3>Tools</h3>
+
+          <div class="tool-tags">
+
+            <span>Calculator</span>
+            <span>Clock</span>
+            <span>Memory</span>
+            <span>Tasks</span>
+
+          </div>
+
+          <p>
+            Local tools available to the Jarvis core.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section
+      id="memoryPanel"
+      class="expand-panel hidden"
+    >
+
+      <div class="expand-header">
+
+        <div>
+          <span class="small-label">LONG-TERM MEMORY</span>
+          <h2>Jarvis remembers</h2>
+        </div>
+
+        <button
+          id="closeMemory"
+          class="close-button"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div id="memoryList"></div>
+
+    </section>
+
+
+    <section
+      id="taskPanel"
+      class="expand-panel hidden"
+    >
+
+      <div class="expand-header">
+
+        <div>
+          <span class="small-label">TASK MANAGER</span>
+          <h2>Your tasks</h2>
+        </div>
+
+        <button
+          id="closeTasks"
+          class="close-button"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div id="taskList"></div>
+
+    </section>
+
+
+  </main>
+
+
+  <footer>
+
+    <span>JARVIS PERSONAL AI</span>
+
+    <span>
+      LOCAL CORE / V0.1
+    </span>
+
+  </footer>
+
+
+  <script src="app.js"></script>
+
+</body>
+          </html>
